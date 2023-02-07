@@ -44,4 +44,9 @@ class ProductTest < ActiveSupport::TestCase
              "#{image_url} shouldn't be valid"
     end
   end
+  test "short title" do
+    product = Product.new(title: "a")
+    assert product.invalid?
+    assert_equal ["Short title"], product.errors[:title]
+  end
 end
